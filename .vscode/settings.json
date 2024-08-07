@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "jblas-1.2.4.jar"
+        "libs/jblas-1.2.4.jar"
     ]
 }

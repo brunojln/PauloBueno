@@ -1,7 +1,12 @@
 //biblioteca blas: jblas
+/* Digite os seguintes comandos no Terminal:
+javac -cp "libs/jblas-1.2.4.jar" -d bin src/Matriz/Main.java
+java -cp "libs/jblas-1.2.4.jar;bin" Matriz.Main (: no Linux)
+*/ 
+
 package Matriz;
 import org.jblas.DoubleMatrix;
-
+ 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
@@ -12,9 +17,9 @@ import java.util.ArrayList;
 
 public class Main {
 	public static void main(String[] args){
-		Path caminho = Paths.get("ArquivosCSV", "M.csv");
-		Path caminho2 = Paths.get("ArquivosCSV", "N.csv");
-		Path caminho3 = Paths.get("ArquivosCSV", "a.csv");
+		Path caminho = Paths.get("M.csv");
+		Path caminho2 = Paths.get("N.csv");
+		Path caminho3 = Paths.get("a.csv");
 		
 		List<String> dadosM = readCSV(caminho);
 		List<String> dadosN = readCSV(caminho2);
@@ -29,17 +34,28 @@ public class Main {
         	System.out.println("M * N:");
             printMatrix(MN);
         }
+        else{
+            System.out.println("Não foi possível realizar a operação MN");
+        }
         
         if (a.columns == M.rows) {
         	DoubleMatrix aM = a.mmul(M);
         	System.out.println("a * M:");
             printMatrix(aM);
         }
+        else{
+            System.out.println("Não foi possível realizar a operação aM");
+        }
+        
         if (M.columns == a.rows) {
         	DoubleMatrix Ma = M.mmul(a);
         	System.out.println("M * a:");
             printMatrix(Ma);
         }
+        else{
+            System.out.println("Não foi possível realizar a operação Ma");
+        }
+        
 	}
 	
 	private static void printMatrix(DoubleMatrix matrix) {
